@@ -8,8 +8,8 @@ $(document).ready(function() {
 
         //Get the value and add it to the list if not empty
         var itemText = $("#item").val();
-        if(itemText)
-            $("#todoList").append(generateItem(itemText));
+        addItem(itemText);
+        
 
         //Clear the form
         $("#item").val("");
@@ -17,8 +17,15 @@ $(document).ready(function() {
     });
 });
 
+function addList(name){
+
+}
+
 //Generates the HTML for the new item
-function generateItem(name){
+function addItem(name){
+    if(!name)
+        return;
+
     var domElement =  '<li><div class="item-text">' + name + '</div></li>';
-    return domElement;
+    $("#todoList").append(domElement);
 }

@@ -1,0 +1,36 @@
+.container{
+    margin: 0 auto;
+    width: 100%;
+}
+
+.container-left{
+    clear: left;
+    float: left;
+    width: 200px;
+    word-wrap: break-word;
+}
+
+.container-right{
+    margin-left: 220px;
+    min-width: 200px;
+}
+
+#header {
+    background-color: lightblue;
+}
+
+#content {
+}
+
+.item-text {
+    font-size:20px;
+}
+
+h1{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+li {
+    /*list-style-type: none;*/
+}
