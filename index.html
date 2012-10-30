@@ -44,16 +44,20 @@
     <div id="content">
         <!-- <div class="fb-login-button">Login with Facebook</div> -->
         <div class="container">
-          <div class="container-left">
-            Left frame fdhsfldgjsdalkfjaslkdfjsakl;fjadkls;fjldksafjldsak;fjadkls;fjldskaghdaskjghasljdghsalkdh
+          <div class="container-left rounded-corners">
+            <h2>Your Lists</h2>
+            <form id="addListForm">
+                <input id="list" type="text" placeholder="Add a New List"><input type="submit">
+            </form>
+            <ul id="listOfLists">
+            </ul>
           </div>
           <div class="container-right">
-            <form id="todoForm">
+            <form id="addItemForm">
                 <label for="item">Add an item</label><br/>
                 <input id="item" type="text" placeholder="New Item"><input type="submit">
             </form> 
             <ul id="todoList">
-                <li><div class="item-text">Item #1</div></li>
             </ul>
           </div>
         </div>
