@@ -37,6 +37,8 @@ $(document).ready(function() {
 
     $(document).on("click", "#listOfLists .list-text", function(event){
         sandbox.setCurrentList($(this).data());
+        $("li").removeClass("selected");
+        $(this).closest("li").addClass("selected");
     });
 
     $(document).on("click", "#todoList .item-text", function(event){
@@ -78,13 +80,11 @@ Sandbox.prototype.addList = function(name){
 
 // Set the current List (fails to check against lists with the same name)
 Sandbox.prototype.setCurrentList = function(list){
-    console.log("set current list");
     for(var i = 0; i < this.lists.length; i++){
         if(this.lists[i].name == list.name)
             this.currentList = this.lists[i].value;
     }
     $("#addItemForm label").html(list.name);
-    console.log(this.currentList.name);
 
     this.clearList();
     this.populateListItems();
@@ -142,8 +142,11 @@ List.prototype.addItem = function(name) {
 // }
 
 List.prototype.render = function(){
+    $("li").removeClass("selected");
     var domElement = $('<li>').append('<div class="list-text">' + this.name 
-        + '</div><a class="deleteList" href="#">del</a>');
+        + '</div><a class="deleteList" href="#">del</a><div style=”clear:both;”>&nbsp;</div>')
+        .addClass("selected");
+
     return domElement;
 }
 
@@ -155,6 +158,6 @@ function Item(name){
 
 Item.prototype.render = function(){
     var domElement =  $('<li>').append('<div class="item-text"><input type="checkbox">' + this.name 
-        + '</div><a class="deleteItem" href="#">del</a>');
+        + '</div><a class="deleteItem" href="#">del</a><div style=”clear:both;”>&nbsp;</div>');
     return domElement;
 }

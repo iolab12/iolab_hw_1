@@ -25,7 +25,7 @@
 }
 
 #header {
-    background-color: lightblue;
+    background-color: #F2D272;
     padding: 0 20px;
 }
 
@@ -37,15 +37,29 @@
     font-size:20px;
 }
 
+body {
+    color: #465973;
+}
+
 h1{
     font-size: 25px;
     font-weight: bold;
+    color: #465973;
 }
 
 li {
     /*list-style-type: none;*/
     clear: left;
     cursor: pointer;
+    padding: 5px;
+    margin: 5px;
+}
+
+.selected{
+    background-color: #F2D272;
+    order-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    -webkit-border-radius: 0.5em;
 }
 
 #todoList {
