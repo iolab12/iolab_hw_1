@@ -5,10 +5,11 @@
 
     <link rel="stylesheet" type="text/css" href="reset.css" />
     <link rel="stylesheet" type="text/css" href="main.css" />
+    <link rel="stylesheet" type="text/css" href="qunit-1.10.0.css" />
 
     <!-- Include a reference to jquery via google's hosted resources -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-    
+    <script type="text/javascript" src="qunit-1.10.0.js"></script>
     <script type="text/javascript" src="todo.js"></script>
 </head>
 <body>
@@ -52,9 +53,9 @@
             <ul id="listOfLists">
             </ul>
           </div>
-          <div class="container-right">
+          <div class="container-right rounded-corners">
             <form id="addItemForm">
-                <label for="item">Add an item</label><br/>
+                Your Current List: <label for="item"></label><br/>
                 <input id="item" type="text" placeholder="New Item"><input type="submit">
             </form> 
             <ul id="todoList">
@@ -63,4 +64,7 @@
         </div>
     </div>
 </body>
+<footer>
+    <div id="qunit"></div>
+</footer>
 </html>

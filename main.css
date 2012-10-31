@@ -1,5 +1,5 @@
 .container{
-    margin: 0 20px;
+    margin: 0 auto;
     width: 100%;
 }
 
@@ -7,18 +7,26 @@
     background-color: lightgray;
     clear: left;
     float: left;
+    margin-left: 20px;
+    min-height: 400px;
     padding: 5px;
-    width: 200px;
+    width: 300px;
     word-wrap: break-word;
 }
 
 .container-right{
-    margin-left: 220px;
-    min-width: 200px;
+    border: solid;
+    border-width: 1px;
+    margin-left: 340px;
+    margin-right: 20px;
+    min-height: 400px;
+    min-width: 300px;
+    padding: 5px;
 }
 
 #header {
     background-color: lightblue;
+    padding: 0 20px;
 }
 
 #content {
@@ -36,10 +44,25 @@ h1{
 
 li {
     /*list-style-type: none;*/
+    clear: left;
+    cursor: pointer;
+}
+
+#todoList {
+    float:left;
+    width: 100%;
 }
 
 .rounded-corners {
     border-radius: 0.5em;
     -moz-border-radius: 0.5em;
     -webkit-border-radius: 0.5em;
+}
+
+.deleteList, .deleteItem {
+    float: right;
+}
+
+.item-text, .list-text {
+    float: left;
 }
