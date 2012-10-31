@@ -31,7 +31,7 @@ $(document).ready(function() {
 
     $(document).on("click", ".deleteItem", function(event){
         //remove from the dom
-        $(this).closest("li").remove();
+        sandbox.currentList.deleteItem(this);
     });
 
 
@@ -44,7 +44,8 @@ $(document).ready(function() {
     $(document).on("click", "#todoList .item-text", function(event){
         console.log($(this).data().name);
         //TODO toggle item state
-        
+        // console.log($(this).data().toggle());
+        // $(this).closest("input").attr('checked',$(this).data().completed);
     });
 
 });
@@ -131,20 +132,20 @@ List.prototype.addItem = function(name) {
     var domElement = newItem.render();
     $(domElement).children(".item-text").data(newItem);
     $("#todoList").append(domElement);
-    // var domElement =  '<li><div class="item-text"><input type="checkbox">' + name 
-    //     + '<a class="deleteItem" href="#">del</a></div></li>';
-    // $("#todoList").append(domElement);
+    return domElement;
 }
 
 
-// List.prototype.deleteItem =  function(element){
-//     // $(element).remove();
-// }
+List.prototype.deleteItem =  function(element){
+    $(element).closest("li").remove();
+}
 
+
+// Generates and returns the HTML of the List
 List.prototype.render = function(){
     $("li").removeClass("selected");
     var domElement = $('<li>').append('<div class="list-text">' + this.name 
-        + '</div><a class="deleteList" href="#">del</a><div style=”clear:both;”>&nbsp;</div>')
+        + '</div><a class="deleteList" href="#">del</a><div style="clear:both;"></div>')
         .addClass("selected");
 
     return domElement;
@@ -156,8 +157,16 @@ function Item(name){
     this.completed = false;
 }
 
+// Generates and returns the HTML of the list item.
 Item.prototype.render = function(){
     var domElement =  $('<li>').append('<div class="item-text"><input type="checkbox">' + this.name 
-        + '</div><a class="deleteItem" href="#">del</a><div style=”clear:both;”>&nbsp;</div>');
+        + '</div><a class="deleteItem" href="#">del</a><div style="clear:both;"></div>');
     return domElement;
+}
+
+// Toggles the state of the item
+Item.prototype.toggle = function(){
+    this.completed != this.completed;
+    // this.completed = !this.completed;
+    return this.completed;
 }
