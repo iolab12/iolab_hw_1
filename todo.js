@@ -22,6 +22,7 @@ $(document).ready(function() {
     });
 
     $(document).on("click", ".deleteList", function(event){
+        event.stopPropagation();
         //remove from the dom
         $(this).closest("li").remove();
 
@@ -30,18 +31,19 @@ $(document).ready(function() {
     });
 
     $(document).on("click", ".deleteItem", function(event){
+        event.stopPropagation();
         //remove from the dom
         sandbox.currentList.deleteItem(this);
     });
 
 
-    $(document).on("click", "#listOfLists .list-text", function(event){
-        sandbox.setCurrentList($(this).data());
+    $(document).on("click", ".list", function(event){
+        sandbox.setCurrentList($(this).closest("li").data());
         $("li").removeClass("selected");
         $(this).closest("li").addClass("selected");
     });
 
-    $(document).on("click", "#todoList .item-text", function(event){
+    $(document).on("click", ".item", function(event){
         console.log($(this).data().name);
         //TODO toggle item state
         // console.log($(this).data().toggle());
@@ -70,7 +72,7 @@ Sandbox.prototype.addList = function(name){
     var newList = new List(name);
     this.lists.push({name:name, value:newList, order:this.lists.length});
     var domElement = newList.render();
-    $(domElement).children(".list-text").data(newList);
+    $(domElement).data(newList);
     $("#listOfLists").append(domElement);
 
     this.setCurrentList(newList);
@@ -120,7 +122,7 @@ function List(name){
 List.prototype.addItem = function(name) {
     //Generates the HTML for the new item
     if(!$.trim(name))
-        return;
+        return false;
 
     console.log("Add Item");
     //Save to Local Storage
@@ -146,7 +148,8 @@ List.prototype.render = function(){
     $("li").removeClass("selected");
     var domElement = $('<li>').append('<div class="list-text">' + this.name 
         + '</div><a class="deleteList" href="#">del</a><div style="clear:both;"></div>')
-        .addClass("selected");
+        .addClass("selected")
+        .addClass("list");
 
     return domElement;
 }
@@ -160,13 +163,14 @@ function Item(name){
 // Generates and returns the HTML of the list item.
 Item.prototype.render = function(){
     var domElement =  $('<li>').append('<div class="item-text"><input type="checkbox">' + this.name 
-        + '</div><a class="deleteItem" href="#">del</a><div style="clear:both;"></div>');
+        + '</div><a class="deleteItem" href="#">del</a><div style="clear:both;"></div>')
+        .addClass("item");
     return domElement;
 }
 
 // Toggles the state of the item
 Item.prototype.toggle = function(){
-    this.completed != this.completed;
-    // this.completed = !this.completed;
+    // this.completed != this.completed;
+    this.completed = !this.completed;
     return this.completed;
 }
